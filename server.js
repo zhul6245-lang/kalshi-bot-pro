@@ -43,14 +43,17 @@ async function checkKalshi() {
 
     const now = new Date().toISOString().replace("T", " ").slice(0, 19);
 
-    let message = "📊 Kalshi 自动推送\n";
-    message += `(UTC 时间：${now})\n\n`;
+    let message = "📊 Kalshi 自动推送\n\n";
+    message += `UTC 时间: ${now}\n\n`;
     message += lines.join("\n");
 
     await sendTelegram(message);
     console.log("✅ 已发送一条 Telegram 更新");
   } catch (err) {
-    console.error("❌ Kalshi API 错误：", err.message || err);
+    // 这里我们把详细错误打印出来
+    const status = err.response?.status;
+    const data = err.response?.data;
+    console.error("❌ Kalshi API 错误：", status, data || err.message);
   }
 }
 
