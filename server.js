@@ -26,9 +26,9 @@ function formatMarket(m) {
 async function checkKalshi() {
   try {
    const res = await axios.get(
-  "https://api.elections.kalshi.com/trading-api/v1/markets",
+  "https://api.elections.kalshi.com/trade-api/v2/markets",
   { timeout: 5000 }
-); 
+);
     const markets = res.data.markets || [];
 
     if (!markets.length) {
