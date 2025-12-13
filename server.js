@@ -25,10 +25,10 @@ function formatMarket(m) {
 // 调用 Kalshi API
 async function checkKalshi() {
   try {
-    const res = await axios.get(
-  "https://trading-api.kalshi.com/v1/markets",
+   const res = await axios.get(
+  "https://api.elections.kalshi.com/trading-api/v1/markets",
   { timeout: 5000 }
-);
+); 
     const markets = res.data.markets || [];
 
     if (!markets.length) {
